@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>User</title>
+</head>
+<body>
+
+    <h2>-------------------------------------------------------------------------------------------------------</h1>
+        <h1><a class="back" href = "{% url 'reservation_detail' gym.id reservation.id %}"> Back</a>User Detail</h1>
+        <h2>-------------------------------------------------------------------------------------------------------</h1>
+	
+	<ul class = "left">
+        <ul class="bordering">
+		<li>
+			Name: 
+		</li>
+        <li class = "move_left">
+			{{reservation.user.firstname}}
+			{{user.lastname}}
+		</li>
+    </ul>
+
+    <ul class="bordering">
+		<li>
+			Age: 
+		</li>
+        <li class = "move_left">
+			{{reservation.user.age}}
+		</li>
+    </ul>
+
+    </ul>
+    <ul class= "right">
+		<ul class="bordering">
+            <li>
+                Email: 
+            </li>
+            <li class = "move_left" >
+                {{reservation.user.email}}
+            </li>
+        </ul>
+    
+        <ul class="bordering">
+            <li>
+                Password: 
+            </li>
+            <li class = "move_left_censored">
+                {{reservation.user.password}}
+            </li>
+        </ul>
+	</ul>
+
+    <style>
+        .bordering
+        {
+            margin-top: 20px;
+            border-style: solid;
+            border-width: 2px;
+            border-color: grey;
+            border-radius: 10px;
+        }
+        .move_left
+        {
+            font-weight: bold;
+            margin-right: 30px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .move_left_censored
+        {
+            font-weight: bold;
+            margin-left: 40px;
+            margin-right: 10px;
+            margin-bottom: 20px;
+            text-decoration: line-through;
+        }
+
+        .left
+            {
+                
+                margin-left : 30%;
+                float : left;
+            }
+            li
+            {
+                margin-top : 20px;
+            }
+
+            .right
+            {
+                margin-right : 30%;
+                float : right;
+            }
+            ul
+            {
+                list-style-type: none;
+            }
+        body
+        {
+            background-color: #FAEBD7;
+            font-family: Arial, sans-serif;
+            font-size: 22px;
+            
+        }
+        .back
+            {
+                display  :flex;
+               margin-right : 40%;
+            }
+            h1
+            {
+                
+                display  :flex;
+                text-align : center;
+            }
+            h2
+            {
+                text-align : center;
+            }
+    </style>
+
+</body>
+</html>

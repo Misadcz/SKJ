@@ -1,0 +1,146 @@
+<html>
+    <body>
+        <h2>-------------------------------------------------------------------------------------------------------</h1>
+        <h1><a class="back" href = "{% url 'index' %}"> Back</a>{{gym.name}}</h1>
+        <h2>-------------------------------------------------------------------------------------------------------</h1>
+        <p class ="gym_main">Town: {{gym.town}}</p>
+        <p class ="gym_main" >Type of Gym: {{gym.description}}</p>
+        <p class ="gym_main">Entry: {{gym.entry}},-</p>
+        
+    
+        {% if gym.reservation_set.all %}
+            <h3>Reservations:</h3>
+            <ul class = "ul_middle">
+                {% for reservation in gym.reservation_set.all %}
+                <li><a href="{% url 'reservation_detail' gym.id reservation.id %}">#{{ reservation.id }} Reservation</a></li>
+            {% endfor %}
+            <a href="{% url 'reservation_add' gym.id%}"><button type="button">Add new Reservation</button></a>
+            </ul>
+
+
+            <h3>Instructors:</h3>
+            <ul class = "ul_middle">
+                {% for instructor in instructors %}
+                <li><a href="{% url 'instructor_detail_main' gym.id instructor.id %}">{{ instructor.firstname }} {{ instructor.lastname }} </a></li>
+            {% endfor %}
+            <a href="{% url 'instructor_add' gym.id%}"><button type="button">Add new Instructor</button></a>
+            </ul>
+
+
+        {% else %}
+            <p>No reservations yet.</p>
+        {% endif %}
+
+        <ul class="left" >
+            <li class = "main_ul">Available workouts:</li>
+        {% for w in workouts %}
+        <li>
+            <li><a href="{% url 'workout_detail_main' gym.id w.id %}">{{w.name}} </a></li>
+        
+        </li>
+        {% endfor %}
+        <a href="{% url 'workout_add' gym.id %}"><button type="button">Add new Workout</button></a>
+        </ul>
+
+        <ul class="right">
+            <li class = "main_ul">Users:</li>
+            {% for user in users %}
+            <li>
+                <a href="{% url 'user_detail_main' gym.id user.id %}"> {{user.firstname}}  {{user.lastname}}</a>
+            </li>
+            {% endfor %}
+            <a href="{% url 'user_add' gym.id %}"><button type="button">Add new User</button></a>
+            </ul>
+
+
+            
+
+       
+
+        
+        <style>
+    button 
+    {
+        margin-bottom : 20px;
+        background-color: #3CB371;
+        color: white;
+        padding: 10px 10px;
+        border-radius: 5px;
+        font-size: 18px;
+        margin-top: 30px;
+        
+    }
+    button:hover 
+    {
+        background-color: #006400;
+    }
+    ul
+    {
+        list-style-type: none;
+    }
+            .ul_middle
+            {
+                list-style-type: none;
+                text-align: center;
+            }
+            h3
+            {
+                text-align: center;
+            }
+            .back
+            {
+                display  :flex;
+               margin-right : 44%;
+            }
+            h1
+            {
+                
+                display  :flex;
+                text-align : center;
+            }
+
+            
+            body
+            {
+                background-color: #FAEBD7;
+                font-family: Arial, sans-serif;
+                font-size: 18px;
+            }
+            a
+            {
+                text-decoration: none;
+            
+            }
+            h2
+            {
+                text-align : center;
+            }
+
+            .gym_main
+            {
+                text-align : center;
+                font-size: 22px;
+            }
+
+            .left
+            {
+                margin-left : 35%;
+                float : left;
+            }
+
+            .right
+            {
+                margin-right : 35%;
+                float : right;
+            }
+
+            .main_ul
+            {
+                font-weight: bold;
+                list-style-type: none;
+                font-size: 20px;
+            }
+        </style>
+    
+    </body>
+</html
